@@ -8,7 +8,7 @@ export class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dropboxAccessToken: '<No token yet>',
+            dropboxAccessToken: '',
         }
     }
     // Callback to let child components update my state

@@ -14,13 +14,15 @@ export class Checklist extends Component {
             url: '',
             listName: '',
             listIconName: '',
+            loading: true,
             listItems: []
         }
     }
 
     componentDidMount() {       
         console.log('Loading list', this.props.match.params.listIdentifier + '.xml');
-        console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken );
+        this.setState({listName: this.props.match.params.listIdentifier});
+console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken );
         // TODO: Handle failure to load XML
         var dbx = new Dropbox({ accessToken: this.props.dropboxAccessToken });
         dbx.filesDownload({path: '/apps/paperless/'+this.props.match.params.listIdentifier + '.xml'})
@@ -30,8 +32,9 @@ export class Checklist extends Component {
             .then(json => json.list)
             .then(list => {
                 this.setState({
-                    listName: list.listName,
-                    listItems: list.item
+                    listName: list.listName._text,
+                    listItems: list.item,
+                    loading: false
                 });
             })
     }
@@ -40,16 +43,18 @@ export class Checklist extends Component {
         return (
         <div>
             <h2>
-                {this.state.listName._text}
+                {this.state.listName}
             </h2>
             <ul>
-                {(typeof this.state.listItems !== "undefined") ?
+                {(this.state.loading) ?
+                    <div>Loading...</div> :
+                    (typeof this.state.listItems !== "undefined") ?
                     this.state.listItems.map((item, i) =>
                         <ChecklistItem key={i}
                             {...item}/>
                     )
                     : <em>(No items)</em> }
-            </ul>
+                </ul>
         </div>
     )}
 }

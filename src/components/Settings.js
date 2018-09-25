@@ -5,14 +5,6 @@ import { PetersDropboxAccessToken } from '../util/PrivateToken';
 
 export class Settings extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            foo: [],
-            dropboxAccessToken: '',
-        }
-    }
-
     componentDidMount() {       
         console.log('In Settings DidMount ' + this.props.dropboxAccessToken);
         this.props.updateDropboxAccessToken( PetersDropboxAccessToken );
@@ -25,11 +17,11 @@ export class Settings extends Component {
             <h2>
                 Settings
             </h2>
-            <ul>
-                {this.state.foo.map((item, i) =>
-                    <li key={i}>Dropbox list: {item._text}</li>
-                )}
-            </ul>
+            <div>Dropbox Connection:</div>
+            { (this.props.dropboxAccessToken === '') ?
+                <div>Not connected</div> :
+                <div>Connected as peter</div>
+            }
         </div>
     )}
 }

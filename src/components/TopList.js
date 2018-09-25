@@ -11,6 +11,7 @@ export class TopList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             topListArray: []
         }
     }
@@ -29,7 +30,8 @@ export class TopList extends Component {
 //            .then(dump => { console.log(dump); return(dump); })
             .then(list => {
                 this.setState({
-                    topListArray: list
+                    topListArray: list,
+                    loading: false
                 })
                 console.log('Found: ' + this.state.topListArray.length + ' lists on Dropbox');
             })
@@ -43,9 +45,13 @@ export class TopList extends Component {
                 My Paperless Lists
             </h2>
             <ul>
-                {this.state.topListArray.map((item, i) =>
-                    <TopListItem key={i}
-                        {...item}/>
+                {(this.props.dropboxAccessToken === '') ? 
+                <div>Use <em>Settings</em> to connect to Dropbox</div> :
+                    (this.state.loading) ?
+                    <div>Loading...</div> : 
+                    this.state.topListArray.map((item, i) =>
+                        <TopListItem key={i}
+                            {...item}/>
                 )}
             </ul>
         </div>
