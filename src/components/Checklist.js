@@ -25,10 +25,10 @@ export class Checklist extends Component {
         console.log('Loading list', this.props.match.params.listIdentifier + '.xml');
         this.setState({listName: this.props.match.params.listIdentifier});
 //        console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken );
-        this.loadListFromDropbox();
 
+        this.loadChecklist();
         // Set up a poller to check if the list updates on Dropbox:
-        this.pollingInterval = setInterval(() => this.checkDropboxListUpdate(), 1000 );
+        this.pollingInterval = setInterval(() => this.checkUpdateChecklist(), 1000 );
     }
 
     componentWillUnmount() {
@@ -36,12 +36,14 @@ export class Checklist extends Component {
             clearInterval(this.pollingInterval);
         }
     }
-    loadListFromDropbox() {
+
+    // Load checklist from Dropbox
+    loadChecklist() {
         // TODO: Handle failure to load XML
         this.dbx.filesDownload({path: '/apps/paperless/'+this.props.match.params.listIdentifier + '.xml'})
             .then(response => {
                 this.setState({listRev: response.rev});
-                return(readAsText(response.fileBlob));
+                return readAsText(response.fileBlob);
                 })
             .then(xmltext => xmljs.xml2json(xmltext, {compact: true, spaces: 4}))
             .then(jsondata => JSON.parse(jsondata))
@@ -56,15 +58,15 @@ export class Checklist extends Component {
             })
     }
 
-    // Check Dropbox file revision, and if changed, reload
-    checkDropboxListUpdate()
+    // Check Dropbox file-revision of checklist, and if changed, reload it
+    checkUpdateChecklist()
     {
         console.log('Checking Dropbox for list-updates...');
         this.dbx.filesGetMetadata({path: '/apps/paperless/'+this.props.match.params.listIdentifier + '.xml'})
             .then(response => {
                 if (response.rev !== this.state.listRev) {
                     console.log('Reloading list...');
-                    this.loadListFromDropbox();
+                    this.loadChecklist();
                 }
             });
     }

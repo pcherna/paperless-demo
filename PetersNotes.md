@@ -16,19 +16,33 @@
 - Parse index.plist to make the top list (list of lists)
 - Connect to dropbox using dev-token, read from there
 - Polls Dropbox for changes on individual lists
+- Polls Dropbox for changes on top list
 
-# Specific TODO
+# TODO app features
+- TopList:
+  - Add/delete lists
+  - Reorder lists
+  - Show list-icon
+  - Show item-count
+- Checklist:
+  - Add/delete items
+  - Reorder items
+  - Show list icon
+  - Format note-text including hyperlinks
+  - Persist changes
+- Auth:
+  - Use OAuth interface to properly connect to Dropbox
+
+# TODO structural etc.
 - Use Redux to manage state
 - Style it in Material
-- Store state of checkbox updates
-- Add/delete lists
-- Add/delete items
-- Toplist: Check for changes in Dropbox, autoupdate display
-- Use OAuth interface to properly connect to Dropbox
 - Still tries to connect to Dropbox when it doesn't have a token
+- Move logic into Node
+- Create Electron app
 
 # General TODO
 - Put on Github?
+- Clean indentation
 - Very little error handling
 - Lots of untested /unhandled edge cases, e.g. have no lists, bad URL, unexpected errors
 - I have promise chains that do very little per step; can be consolidated some. Don't have a strategy on that yet

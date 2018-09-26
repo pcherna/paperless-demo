@@ -16,14 +16,34 @@ export class TopList extends Component {
         }
     }
 
+    componentWillMount() {
+        this.dbx = new Dropbox({ accessToken: this.props.dropboxAccessToken });
+    }
+
     componentDidMount() {       
         console.log('Loading list from Dropbox', 'index.plist');
         // TODO: Handle failure to load XML
         console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken );
 
-        var dbx = new Dropbox({ accessToken: this.props.dropboxAccessToken });
-        dbx.filesDownload({path: '/apps/paperless/index.plist'})
-            .then(response => readAsText(response.fileBlob))
+        this.loadTopList();
+        // Set up a poller to check if the list updates on Dropbox:
+        this.pollingInterval = setInterval(() => this.checkUpdateTopList(), 1000 );
+    }
+
+    componentWillUnmount() {
+        if (this.pollingInterval) {
+            clearInterval(this.pollingInterval);
+        }
+    }
+
+    // Load top list from Dropbox:
+    loadTopList() {
+        // TODO: Handle failure to load XML
+        this.dbx.filesDownload({path: '/apps/paperless/index.plist'})
+            .then(response => {
+                this.setState({listRev: response.rev});
+                return readAsText(response.fileBlob);
+            })
             .then(xmltext => xmljs.xml2json(xmltext, {compact: true, spaces: 4}))
             .then(jsondata => JSON.parse(jsondata))
             .then(jsondata => jsondata.plist.array.string)
@@ -35,6 +55,19 @@ export class TopList extends Component {
                 })
                 console.log('Found: ' + this.state.topListArray.length + ' lists on Dropbox');
             })
+    }
+
+    // Check Dropbox file-revision of top list, and if changed, reload it
+    checkUpdateTopList()
+    {
+        console.log('Checking Dropbox for list-updates...');
+        this.dbx.filesGetMetadata({path: '/apps/paperless/index.plist'})
+            .then(response => {
+                if (response.rev !== this.state.listRev) {
+                    console.log('Reloading list...');
+                    this.loadTopList();
+                }
+            });
     }
 
     // TODO: Handle having zero lists
