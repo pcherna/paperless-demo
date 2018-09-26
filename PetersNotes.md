@@ -28,6 +28,7 @@
 - Still tries to connect to Dropbox when it doesn't have a token
 
 # General TODO
+- Put on Github?
 - Very little error handling
 - Lots of untested /unhandled edge cases, e.g. have no lists, bad URL, unexpected errors
 - I have promise chains that do very little per step; can be consolidated some. Don't have a strategy on that yet
