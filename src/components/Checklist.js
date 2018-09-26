@@ -33,7 +33,7 @@ console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken
             .then(list => {
                 this.setState({
                     listName: list.listName._text,
-                    listItems: list.item,
+                    listItems: (Array.isArray(list.item)) ? list.item : [list.item],
                     loading: false
                 });
             })
