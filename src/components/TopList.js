@@ -24,10 +24,11 @@ export class TopList extends Component {
         console.log('Loading list from Dropbox', 'index.plist');
         // TODO: Handle failure to load XML
         console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken );
-
-        this.loadTopList();
-        // Set up a poller to check if the list updates on Dropbox:
-        this.pollingInterval = setInterval(() => this.checkUpdateTopList(), 1000 );
+        if (this.props.dropboxAccessToken !== '') {
+            this.loadTopList();
+            // Set up a poller to check if the list updates on Dropbox:
+            this.pollingInterval = setInterval(() => this.checkUpdateTopList(), 1000 );
+        }
     }
 
     componentWillUnmount() {

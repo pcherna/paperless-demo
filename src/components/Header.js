@@ -6,12 +6,12 @@ import '../stylesheets/css/ui.css';
 
 const Header = () => (
     <header>
-        <nav className="menu">
+        <nav className="single-nav menu">
             <ul>
-                <li class="menulink"><Link class="link" to='/'>Home</Link></li>
-                <li class="menulink"><Link class="link" to='/foo'>Todo</Link></li>
-                <li class="menulink"><Link class="link" to='/bad'>Bad</Link></li>
-                <li class="menulink"><Link class="link" to='/settings'>Settings</Link></li>
+                <li><Link class="link" to='/'>Home</Link></li>
+                <li><Link class="link" to='/foo'>Todo</Link></li>
+                <li><Link class="link" to='/bad'>Bad</Link></li>
+                <li><Link class="link" to='/settings'>Settings</Link></li>
             </ul>
         </nav>
     </header>
