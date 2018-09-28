@@ -6,6 +6,10 @@
 # testing
 /coverage
 
+# sass generated
+/src/stylesheets/css
+/.sass-cache
+
 # production
 /build
 

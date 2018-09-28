@@ -1,0 +1,41 @@
+@import "globals";
+
+body {
+    font-family: 'Exo', sans-serif;
+}
+
+nav.menu {
+    background-color: #dddddd;
+    background-image: url(../../assets/paperless_app_icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 5rem;
+    font-family: 'Signika', sans-serif;
+    font-size: 1.5em;
+    height: 7rem;
+    margin-bottom: 1em;
+}
+
+main.main {
+    padding: 10px;
+    clear: both;
+    background-color: $page-background;
+}
+
+li.menulink {
+    float: left;
+    margin: 20px;
+    padding: 20px;
+    background-color: lightseagreen;
+//    font-family: 'Open-Sans', sans-serif;
+    list-style: none;
+}
+
+a.link {
+    text-decoration: none;
+}
+
+// font-family: 'Bree Serif', serif;
+// font-family: 'Exo', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Signika', sans-serif;

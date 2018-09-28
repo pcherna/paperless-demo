@@ -39,6 +39,7 @@
 - Still tries to connect to Dropbox when it doesn't have a token
 - Move logic into Node
 - Create Electron app
+- Switch to https://www.npmjs.com/package/node-sass-chokidar?
 
 # General TODO
 - Put on Github?

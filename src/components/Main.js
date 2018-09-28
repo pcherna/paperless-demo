@@ -8,9 +8,10 @@ import { Settings } from './Settings';
 import { Checklist } from './Checklist';
 import { Whoops404 } from './Whoops404';
 import Dummy from './Dummy';
+import '../stylesheets/css/ui.css';
 
 const Main = (props) => (
-    <main>
+    <main className="main">
         <Switch>
             <Route exact path='/' render={
                 renderProps => <Home {...props} />

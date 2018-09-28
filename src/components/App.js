@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Main from './Main';
-import '../stylesheets/App.css';
+import '../stylesheets/css/App.css';
 
 export class App extends Component {
 
@@ -16,7 +16,7 @@ export class App extends Component {
 
     render() {
         return(
-            <div>
+            <div class="app">
                 <Header />
                 <Main dropboxAccessToken={this.state.dropboxAccessToken} updateDropboxAccessToken={this.updateDropboxAccessToken} />
             </div>
