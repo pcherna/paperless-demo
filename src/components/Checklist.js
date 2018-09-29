@@ -71,21 +71,41 @@ export class Checklist extends Component {
             });
     }
 
+    renderGroupedList() {
+        return (
+        <div>
+            <div>
+                {this.state.listItems.filter(item => item.itemCompleted._text === 'NO')
+                    .map((item, i) => <ChecklistItem key={i} {...item}/>)}
+            </div>
+            {this.state.listItems.filter(item => item.itemCompleted._text !== 'NO').length > 0 ?
+                <h3>Completed</h3> :
+                null
+            }
+            <div>
+                {this.state.listItems.filter(item => item.itemCompleted._text !== 'NO')
+                .map((item, i) => <ChecklistItem key={i} {...item}/>)}
+            </div>
+       </div>
+        )
+    }
+
     render() {
         return (
         <div>
             <h2>
                 {this.state.listName}
+                {(this.state.listItems.length > 0) ?
+                    <span> ({this.state.listItems.filter(item => item.itemCompleted._text !== 'NO').length} / {this.state.listItems.length})</span> :
+                    null
+                }
             </h2>
             <ul>
                 {(this.state.loading) ?
                     <div>Loading...</div> :
                     (typeof this.state.listItems !== "undefined") ?
-                    this.state.listItems.map((item, i) =>
-                        <ChecklistItem key={i}
-                            {...item}/>
-                    )
-                    : <em>(No items)</em> }
+                        this.renderGroupedList()
+                        : <em>(No items)</em> }
                 </ul>
         </div>
     )}
