@@ -21,6 +21,7 @@
 - Connect to dropbox using dev-token, read from there
 - Polls Dropbox for changes on individual lists
 - Polls Dropbox for changes on top list
+- Integrated prettier
 
 # TODO app features
 - TopList:
@@ -49,7 +50,6 @@
 - Try making it react-native
 
 # General TODO
-- Clean indentation
 - Very little error handling
 - Lots of untested /unhandled edge cases, e.g. have no lists, bad URL, unexpected errors
 - I have promise chains that do very little per step; can be consolidated some. Don't have a strategy on that yet

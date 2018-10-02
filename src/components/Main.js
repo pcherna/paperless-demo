@@ -1,5 +1,4 @@
 // Main is the router for Paperless-app
-// TODO: Need to hit refresh when changing lists
 
 import React from "react";
 import { Switch, Route } from "react-router-dom";

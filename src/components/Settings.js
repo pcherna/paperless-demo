@@ -1,4 +1,4 @@
-// "Settings" route of Paperless-app
+// "Settings" route of Paperless-app, where you connect to Dropbox
 
 import React, { Component } from "react";
 import { Delay } from "../util/Delay";

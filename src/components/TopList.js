@@ -1,4 +1,4 @@
-// "TopList" route of Paperless-app
+// "TopList" route of Paperless-app, the list-of-lists
 
 import xmljs from "xml-js";
 import React, { Component } from "react";

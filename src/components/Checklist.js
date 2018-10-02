@@ -1,4 +1,4 @@
-// "Checklist" route of Paperless-app
+// "Checklist" route of Paperless-app, show a single checklist
 
 import xmljs from "xml-js";
 import React, { Component } from "react";
@@ -11,7 +11,7 @@ export class Checklist extends Component {
         super(props);
         this.state = {
             listName: "",
-            ///            listIconName: '',
+            // listIconName: "",
             loading: true,
             listItems: []
         };
@@ -26,7 +26,6 @@ export class Checklist extends Component {
             this.props.match.params.listIdentifier + ".xml"
         );
         this.setState({ listName: this.props.match.params.listIdentifier });
-        //        console.log( 'dropboxAccessToken is found to be ', this.props.dropboxAccessToken );
 
         this.loadChecklist();
         // Set up a poller to check if the list updates on Dropbox:
@@ -93,6 +92,7 @@ export class Checklist extends Component {
             });
     }
 
+    // render all unchecked items, followed by the completed ones
     renderGroupedList() {
         return (
             <div>
@@ -119,6 +119,8 @@ export class Checklist extends Component {
         );
     }
 
+    // Render checklist, showing items to be done and total items,
+    // and handling cases of still loading, and empty list
     render() {
         return (
             <div>
