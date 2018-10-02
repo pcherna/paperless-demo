@@ -16,7 +16,7 @@ export class App extends Component {
 
     render() {
         return (
-            <div class="app">
+            <div className="app">
                 <Header />
                 <Main
                     dropboxAccessToken={this.state.dropboxAccessToken}

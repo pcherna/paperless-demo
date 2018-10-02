@@ -9,24 +9,16 @@ const Header = () => (
         <nav className="single-nav menu">
             <ul>
                 <li>
-                    <Link class="link" to="/">
-                        Home
-                    </Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link class="link" to="/foo">
-                        Todo
-                    </Link>
+                    <Link to="/foo">Todo</Link>
                 </li>
                 <li>
-                    <Link class="link" to="/bad">
-                        Bad
-                    </Link>
+                    <Link to="/bad">Bad</Link>
                 </li>
                 <li>
-                    <Link class="link" to="/settings">
-                        Settings
-                    </Link>
+                    <Link to="/settings">Settings</Link>
                 </li>
             </ul>
         </nav>
