@@ -2,12 +2,16 @@
 
 # Key Sources
 
-- LinkedIn, EssentialJS (ski counter app)
-- React Router 4 tutorial from medium
-
+- LinkedIn:
+  - React.js Essential Training (Eve Porcello)
+  - Learning ECMAScript 6 (Eve Porcello)
+  - JavaScript Essential Training (Morten Rand-Hendriksen)
+- Other:
+  - A Simple React Router v4 Tutorial (Paul Sherman)
+  
 # Things I've done
 - create-react-app, to start fresh
-- Model a bit based on ski-counter app
+- Model a bit based on ski-counter app from React.js Essential Training
 - refactor into components folder
 - Updated for react-router 4 based on various tutorials
 - Load individual list.xml from local file
@@ -23,8 +27,8 @@
   - Add/delete lists
   - Reorder lists
   - Show list-icon
-  - Show item-count
 - Checklist:
+  - Make checkmarks clickable
   - Add/delete items
   - Reorder items
   - Show list icon
@@ -35,11 +39,14 @@
 
 # TODO structural etc.
 - Use Redux to manage state
+- Switch to Dropbox notification API (notify.dropboxapi.com/2/files/list_folder/longpoll for client-side work, webhooks for server-side)
 - Style it in Material
 - Still tries to connect to Dropbox when it doesn't have a token
 - Move logic into Node
 - Create Electron app
 - Switch to https://www.npmjs.com/package/node-sass-chokidar?
+- Store something using cookies, e.g. last visited list, username
+- Try making it react-native
 
 # General TODO
 - Put on Github?
