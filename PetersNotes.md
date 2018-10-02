@@ -42,14 +42,13 @@
 - Switch to Dropbox notification API (notify.dropboxapi.com/2/files/list_folder/longpoll for client-side work, webhooks for server-side)
 - Style it in Material
 - Still tries to connect to Dropbox when it doesn't have a token
-- Move logic into Node
+- Move some logic into Node
 - Create Electron app
 - Switch to https://www.npmjs.com/package/node-sass-chokidar?
 - Store something using cookies, e.g. last visited list, username
 - Try making it react-native
 
 # General TODO
-- Put on Github?
 - Clean indentation
 - Very little error handling
 - Lots of untested /unhandled edge cases, e.g. have no lists, bad URL, unexpected errors
