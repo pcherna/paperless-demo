@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-// TODO: having to check itemNote._text !== "undefined" is ugly
 export class ChecklistItem extends Component {
     constructor(props) {
         super(props);
