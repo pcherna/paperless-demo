@@ -22,6 +22,8 @@
 - Polls Dropbox for changes on individual lists
 - Polls Dropbox for changes on top list
 - Integrated prettier
+- Added relatively-empty onChange handler for checkboxes
+
 
 # TODO app features
 - TopList:
@@ -29,7 +31,6 @@
   - Reorder lists
   - Show list-icon
 - Checklist:
-  - Make checkmarks clickable
   - Add/delete items
   - Reorder items
   - Show list icon
@@ -42,7 +43,6 @@
 - Use Redux to manage state
 - Switch to Dropbox notification API (notify.dropboxapi.com/2/files/list_folder/longpoll for client-side work, webhooks for server-side)
 - Style it in Material
-- Still tries to connect to Dropbox when it doesn't have a token
 - Move some logic into Node
 - Create Electron app
 - Switch to https://www.npmjs.com/package/node-sass-chokidar?

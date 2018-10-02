@@ -1,26 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 
 // TODO: having to check itemNote._text !== "undefined" is ugly
-const ChecklistItem = ({
-    itemName,
-    itemCompleted,
-    itemNote,
-    dateCompleted
-}) => (
-    <div>
-        <input
-            id="ZZZ"
-            type="checkbox"
-            checked={itemCompleted._text !== "NO"}
-        />
-        {itemName._text}
-        {typeof itemNote._text !== "undefined" && itemNote._text !== "" ? (
-            <span>
-                <br />
-                <em>({itemNote._text})</em>
-            </span>
-        ) : null}
-    </div>
-);
+export class ChecklistItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            checked: false
+        };
+    }
 
-export default ChecklistItem;
+    componentDidMount() {
+        // TODO: Move to componentWillMount?
+        this.setState({ checked: this.props.itemCompleted._text !== "NO" });
+    }
+
+    handleClick = () => {
+        console.log(
+            "Setting checkbox '%s' to %o",
+            this.props.itemName._text,
+            !this.state.checked
+        );
+        this.setState({ checked: !this.state.checked });
+    };
+
+    render() {
+        return (
+            <div>
+                <input
+                    type="checkbox"
+                    checked={this.state.checked}
+                    onChange={this.handleClick}
+                />
+                {this.props.itemName._text}
+                {typeof this.props.itemNote._text !== "undefined" &&
+                this.props.itemNote._text !== "" ? (
+                    <span>
+                        <br />
+                        <em>({this.props.itemNote._text})</em>
+                    </span>
+                ) : null}
+            </div>
+        );
+    }
+}

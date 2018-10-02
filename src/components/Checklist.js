@@ -4,7 +4,7 @@ import xmljs from "xml-js";
 import React, { Component } from "react";
 import { Dropbox } from "dropbox";
 import { readAsText } from "../util/FileReader";
-import ChecklistItem from "./ChecklistItem";
+import { ChecklistItem } from "./ChecklistItem";
 
 export class Checklist extends Component {
     constructor(props) {
@@ -27,12 +27,14 @@ export class Checklist extends Component {
         );
         this.setState({ listName: this.props.match.params.listIdentifier });
 
-        this.loadChecklist();
-        // Set up a poller to check if the list updates on Dropbox:
-        this.pollingInterval = setInterval(
-            () => this.checkUpdateChecklist(),
-            1000
-        );
+        if (this.props.dropboxAccessToken !== "") {
+            this.loadChecklist();
+            // Set up a poller to check if the list updates on Dropbox:
+            this.pollingInterval = setInterval(
+                () => this.checkUpdateChecklist(),
+                1000
+            );
+        }
     }
 
     componentWillUnmount() {
@@ -140,7 +142,11 @@ export class Checklist extends Component {
                     ) : null}
                 </h2>
                 <ul>
-                    {this.state.loading ? (
+                    {this.props.dropboxAccessToken === "" ? (
+                        <div>
+                            Use <em>Settings</em> to connect to Dropbox
+                        </div>
+                    ) : this.state.loading ? (
                         <div>Loading...</div>
                     ) : typeof this.state.listItems !== "undefined" ? (
                         this.renderGroupedList()
