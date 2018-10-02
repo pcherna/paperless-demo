@@ -49,10 +49,10 @@ export class Checklist extends Component {
             .then(jsondata => JSON.parse(jsondata))
             .then(json => json.list)
             .then(list => {
-                console.log(list.item);
                 this.setState({
                     listName: list.listName._text,
-                    listItems: (Array.isArray(list.item)) ? list.item : [list.item],
+                    listItems: (typeof list.item !== "undefined") ?
+                        ((Array.isArray(list.item)) ? list.item : [list.item]) : [],
                     loading: false
                 });
             })
