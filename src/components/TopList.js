@@ -91,7 +91,7 @@ export class TopList extends Component {
                 <ul>
                     {this.props.dropboxAccessToken === "" ? (
                         <div>
-                            Use <em>Settings</em> to connect to Dropbox
+                            Use <em>Settings</em> to connect to Dropbox...
                         </div>
                     ) : this.state.loading ? (
                         <div>Loading...</div>
