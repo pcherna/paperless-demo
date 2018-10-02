@@ -1,12 +1,15 @@
 // "Home" route of Paperless-app
 
-import React from 'react';
-import { TopList } from './TopList'
+import React from "react";
+import { TopList } from "./TopList";
 
-const Home = ({dropboxAccessToken, updateDropboxAccessToken}) => (
+const Home = ({ dropboxAccessToken, updateDropboxAccessToken }) => (
     <div>
-        <TopList dropboxAccessToken={dropboxAccessToken} updateDropboxAccessToken={updateDropboxAccessToken}/>
+        <TopList
+            dropboxAccessToken={dropboxAccessToken}
+            updateDropboxAccessToken={updateDropboxAccessToken}
+        />
     </div>
-)
+);
 
 export default Home;

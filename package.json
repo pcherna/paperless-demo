@@ -1,23 +1,23 @@
 {
-  "name": "paperless",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "dropbox": "^4.0.9",
-    "node-sass": "^4.9.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
-    "xml-js": "^1.6.8"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "sass" : "sass --watch src/stylesheets/scss:src/stylesheets/css",
-    "dev": "concurrently  --kill-others-on-fail \"npm start\" \"npm run sass\""
-   }
+    "name": "paperless",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "dropbox": "^4.0.9",
+        "node-sass": "^4.9.3",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
+        "react-router": "^4.3.1",
+        "react-router-dom": "^4.3.1",
+        "react-scripts": "1.1.5",
+        "xml-js": "^1.6.8"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject",
+        "sass": "sass --watch src/stylesheets/scss:src/stylesheets/css",
+        "dev": "concurrently  --kill-others-on-fail \"npm start\" \"npm run sass\""
+    }
 }
