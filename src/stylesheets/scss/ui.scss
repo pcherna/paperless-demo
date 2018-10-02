@@ -9,13 +9,13 @@ nav.menu {
     font-size: 1.5em;
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $nav-bottom-edge-color;
 
     background-image: url(../../assets/paperless_app_icon.png);
     background-size: contain;
     background-repeat: no-repeat;
     padding-left: 4rem;
-    background-color: lightseagreen;
+    background-color: $nav-background-color;
 
     ul {
         padding: 0;
@@ -31,12 +31,12 @@ nav.menu {
             a {
                 display: block;
                 padding: 0.6em 1em;
-                color: white;
+                color: $nav-text-color;
                 text-decoration: none;
-                background-color: lightseagreen;
+                background-color: $nav-background-color;
             }
             a:hover {
-                background: rgb(28, 131, 126);
+                background: $nav-highlight-color;
             }
         }
     }
@@ -45,10 +45,5 @@ nav.menu {
 main.main {
     padding: 10px;
     clear: both;
-    background-color: $page-background;
+    background-color: $main-background;
 }
-
-// font-family: 'Bree Serif', serif;
-// font-family: 'Exo', sans-serif;
-// font-family: 'Open Sans', sans-serif;
-// font-family: 'Signika', sans-serif;
