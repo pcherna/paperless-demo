@@ -148,7 +148,7 @@ export class Checklist extends Component {
                         </div>
                     ) : this.state.loading ? (
                         <div>Loading...</div>
-                    ) : typeof this.state.listItems.length > 0 ? (
+                    ) : this.state.listItems.length > 0 ? (
                         this.renderGroupedList()
                     ) : (
                         <em>(No items)</em>
