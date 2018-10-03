@@ -47,3 +47,17 @@ main.main {
     clear: both;
     background-color: $main-background;
 }
+
+button.button {
+    color: white;
+    font-family: "Exo", sans-serif;
+    font-size: 1.2em;
+
+    background-color: $nav-background-color;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

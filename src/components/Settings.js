@@ -49,11 +49,17 @@ export class Settings extends Component {
                 <h2>Settings</h2>
                 <div>
                     {this.state.authUser === "" ? (
-                        <button onClick={this.handleAuthClick}>
+                        <button
+                            className="button"
+                            onClick={this.handleAuthClick}
+                        >
                             Connect to Dropbox...
                         </button>
                     ) : (
-                        <button onClick={this.handleDeauthClick}>
+                        <button
+                            className="button"
+                            onClick={this.handleDeauthClick}
+                        >
                             Disconnect from Dropbox
                         </button>
                     )}
