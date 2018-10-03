@@ -7,12 +7,16 @@ export class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dropboxAccessToken: ""
+            dropboxAccessToken: "",
+            dropboxAccessStatus: "Not connected"
         };
     }
     // Callback to let child components update my state
-    updateDropboxAccessToken = value =>
-        this.setState({ dropboxAccessToken: value });
+    updateDropboxState = (token, status) =>
+        this.setState({
+            dropboxAccessToken: token,
+            dropboxAccessStatus: status
+        });
 
     render() {
         return (
@@ -20,7 +24,8 @@ export class App extends Component {
                 <Header />
                 <Main
                     dropboxAccessToken={this.state.dropboxAccessToken}
-                    updateDropboxAccessToken={this.updateDropboxAccessToken}
+                    dropboxAccessStatus={this.state.dropboxAccessStatus}
+                    updateDropboxState={this.updateDropboxState}
                 />
             </div>
         );

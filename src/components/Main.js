@@ -23,6 +23,11 @@ const Main = props => (
             />
             <Route
                 exact
+                path="/error_description=:errorArgs"
+                render={renderProps => <Auth {...renderProps} {...props} />}
+            />
+            <Route
+                exact
                 path="/settings"
                 render={renderProps => <Settings {...props} />}
             />

@@ -7,6 +7,13 @@ const PaperlessDropboxClientId = "x6uynxuh9hbxwjt";
 const PaperlessDropboxAuthRedirect = "http://localhost:3000/";
 
 export class Settings extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authUser: ""
+        };
+    }
+
     handleAuthClick = () => {
         let dbx = new Dropbox({ clientId: PaperlessDropboxClientId });
         console.log(dbx.getAuthenticationUrl(PaperlessDropboxAuthRedirect));
@@ -16,22 +23,44 @@ export class Settings extends Component {
         );
     };
 
+    handleDeauthClick = () => {
+        this.props.updateDropboxState("", "Not connected");
+        this.setState({ authUser: "" });
+    };
+
+    componentDidMount() {
+        if (this.props.dropboxAccessToken !== "") {
+            let dbx = new Dropbox({
+                accessToken: this.props.dropboxAccessToken
+            });
+            dbx.usersGetCurrentAccount().then(res => {
+                this.setState({ authUser: res.email });
+                this.props.updateDropboxState(
+                    this.props.dropboxAccessToken,
+                    "Connected as " + res.email
+                );
+            });
+        }
+    }
+
     render() {
         return (
             <div>
                 <h2>Settings</h2>
                 <div>
-                    <button onClick={this.handleAuthClick}>
-                        Connect to Dropbox...
-                    </button>
+                    {this.state.authUser === "" ? (
+                        <button onClick={this.handleAuthClick}>
+                            Connect to Dropbox...
+                        </button>
+                    ) : (
+                        <button onClick={this.handleDeauthClick}>
+                            Disconnect from Dropbox
+                        </button>
+                    )}
                 </div>
                 <div>
-                    <strong>Dropbox Connection: </strong>
-                    {this.props.dropboxAccessToken === "" ? (
-                        <span>Not connected</span>
-                    ) : (
-                        <span>Connected as peter</span>
-                    )}
+                    <strong>Dropbox Status: </strong>
+                    {this.props.dropboxAccessStatus}
                 </div>
             </div>
         );

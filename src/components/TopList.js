@@ -22,10 +22,6 @@ export class TopList extends Component {
     componentDidMount() {
         console.log("Loading list from Dropbox", "index.plist");
         // TODO: Handle failure to load XML
-        console.log(
-            "dropboxAccessToken is found to be ",
-            this.props.dropboxAccessToken
-        );
         if (this.props.dropboxAccessToken !== "") {
             this.loadTopList();
             // Set up a poller to check if the list updates on Dropbox:

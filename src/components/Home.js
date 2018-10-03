@@ -3,11 +3,11 @@
 import React from "react";
 import { TopList } from "./TopList";
 
-const Home = ({ dropboxAccessToken, updateDropboxAccessToken }) => (
+const Home = ({ dropboxAccessToken, updateDropboxState }) => (
     <div>
         <TopList
             dropboxAccessToken={dropboxAccessToken}
-            updateDropboxAccessToken={updateDropboxAccessToken}
+            updateDropboxState={updateDropboxState}
         />
     </div>
 );
