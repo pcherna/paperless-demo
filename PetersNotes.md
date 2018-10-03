@@ -25,6 +25,8 @@
 - Added relatively-empty onChange handler for checkboxes
 - Use OAuth interface to properly connect to Dropbox
 
+# TODO other
+- Test callback from setTimeout
 
 # TODO app features
 - TopList:
