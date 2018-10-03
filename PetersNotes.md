@@ -23,6 +23,7 @@
 - Polls Dropbox for changes on top list
 - Integrated prettier
 - Added relatively-empty onChange handler for checkboxes
+- Use OAuth interface to properly connect to Dropbox
 
 
 # TODO app features
@@ -36,10 +37,9 @@
   - Show list icon
   - Format note-text including hyperlinks
   - Persist changes
-- Auth:
-  - Use OAuth interface to properly connect to Dropbox
 
 # TODO structural etc.
+- The Auth route seems a bit hacky (may be a side effect of doing it all client-side, making it hard to have a dedicated clean auth-url redirect)
 - Use Redux to manage state
 - Switch to Dropbox notification API (notify.dropboxapi.com/2/files/list_folder/longpoll for client-side work, webhooks for server-side)
 - Style it in Material
