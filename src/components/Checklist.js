@@ -6,6 +6,9 @@ import { Dropbox } from "dropbox";
 import { readAsText } from "../util/FileReader";
 import { ChecklistItem } from "./ChecklistItem";
 
+import { List } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+
 export class Checklist extends Component {
     constructor(props) {
         super(props);
@@ -98,25 +101,25 @@ export class Checklist extends Component {
     renderGroupedList() {
         return (
             <div>
-                <div>
+                <List>
                     {this.state.listItems
                         .filter(item => item.itemCompleted._text === "NO")
                         .map((item, i) => (
                             <ChecklistItem key={i} {...item} />
                         ))}
-                </div>
+                </List>
                 {this.state.listItems.filter(
                     item => item.itemCompleted._text !== "NO"
                 ).length > 0 ? (
-                    <h3>Completed</h3>
+                    <Typography variant="title">Completed</Typography>
                 ) : null}
-                <div>
+                <List>
                     {this.state.listItems
                         .filter(item => item.itemCompleted._text !== "NO")
                         .map((item, i) => (
                             <ChecklistItem key={i} {...item} />
                         ))}
-                </div>
+                </List>
             </div>
         );
     }
@@ -126,7 +129,7 @@ export class Checklist extends Component {
     render() {
         return (
             <div>
-                <h2>
+                <Typography variant="headline">
                     {this.state.listName}
                     {this.state.listItems.length > 0 ? (
                         <span>
@@ -140,7 +143,7 @@ export class Checklist extends Component {
                             / {this.state.listItems.length})
                         </span>
                     ) : null}
-                </h2>
+                </Typography>
                 <ul>
                     {this.props.dropboxAccessToken === "" ? (
                         <div>

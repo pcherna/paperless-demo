@@ -6,6 +6,9 @@ import { Dropbox } from "dropbox";
 import { readAsText } from "../util/FileReader";
 import TopListItem from "./TopListItem";
 
+import Typography from "@material-ui/core/Typography";
+import List from "@material-ui/core/List";
+
 export class TopList extends Component {
     constructor(props) {
         super(props);
@@ -83,20 +86,22 @@ export class TopList extends Component {
     render() {
         return (
             <div>
-                <h2>My Paperless Lists</h2>
-                <ul>
-                    {this.props.dropboxAccessToken === "" ? (
-                        <div>
-                            Use <em>Settings</em> to connect to Dropbox...
-                        </div>
-                    ) : this.state.loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        this.state.topListArray.map((item, i) => (
+                <Typography variant="display1" gutterBottom>
+                    My Paperless Lists
+                </Typography>
+                {this.props.dropboxAccessToken === "" ? (
+                    <div>
+                        Use <em>Settings</em> to connect to Dropbox...
+                    </div>
+                ) : this.state.loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <List>
+                        {this.state.topListArray.map((item, i) => (
                             <TopListItem key={i} {...item} />
-                        ))
-                    )}
-                </ul>
+                        ))}
+                    </List>
+                )}
             </div>
         );
     }

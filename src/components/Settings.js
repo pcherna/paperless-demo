@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import { Dropbox } from "dropbox";
+import Button from "@material-ui/core/Button";
 
 const PaperlessDropboxClientId = "x6uynxuh9hbxwjt";
 const PaperlessDropboxAuthRedirect = "http://localhost:3000/";
@@ -49,19 +50,21 @@ export class Settings extends Component {
                 <h2>Settings</h2>
                 <div>
                     {this.state.authUser === "" ? (
-                        <button
-                            className="button"
+                        <Button
+                            variant="contained"
+                            color="primary"
                             onClick={this.handleAuthClick}
                         >
                             Connect to Dropbox...
-                        </button>
+                        </Button>
                     ) : (
-                        <button
-                            className="button"
+                        <Button
+                            variant="contained"
+                            color="primary"
                             onClick={this.handleDeauthClick}
                         >
                             Disconnect from Dropbox
-                        </button>
+                        </Button>
                     )}
                 </div>
                 <div>
