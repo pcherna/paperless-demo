@@ -18,18 +18,24 @@ const theme = createMuiTheme({
 
 export class App extends Component {
     constructor(props) {
+        let dAT = localStorage.getItem("dropboxAccessToken");
+        if (dAT === null) {
+            dAT = "";
+        }
         super(props);
         this.state = {
-            dropboxAccessToken: "",
+            dropboxAccessToken: dAT,
             dropboxAccessStatus: "Not connected"
         };
     }
     // Callback to let child components update my state
-    updateDropboxState = (token, status) =>
+    updateDropboxState = (token, status) => {
         this.setState({
             dropboxAccessToken: token,
             dropboxAccessStatus: status
         });
+        localStorage.setItem("dropboxAccessToken", token);
+    };
 
     render() {
         return (
