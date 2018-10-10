@@ -3,8 +3,8 @@ import Header from "./Header";
 import Main from "./Main";
 import NavBar from "./NavBar";
 import "../stylesheets/css/App.css";
-import { CssBaseline } from "@material-ui/core";
 
+import { CssBaseline } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 import indigo from "@material-ui/core/colors/indigo";
@@ -16,6 +16,7 @@ const theme = createMuiTheme({
     }
 });
 
+// TODO: If we get the dAT from local storage, the initial value of dropboxAccessStatus is not set to the connected user
 export class App extends Component {
     constructor(props) {
         let dAT = localStorage.getItem("dropboxAccessToken");

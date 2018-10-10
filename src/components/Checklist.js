@@ -8,6 +8,7 @@ import { ChecklistItem } from "./ChecklistItem";
 
 import { List } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 export class Checklist extends Component {
     constructor(props) {
@@ -68,6 +69,7 @@ export class Checklist extends Component {
             .then(list => {
                 this.setState({
                     listName: list.listName._text,
+                    listIconName: list.listIconName._text,
                     listItems:
                         typeof list.item !== "undefined"
                             ? Array.isArray(list.item)
@@ -100,27 +102,29 @@ export class Checklist extends Component {
     // render all unchecked items, followed by the completed ones
     renderGroupedList() {
         return (
-            <div>
-                <List>
-                    {this.state.listItems
-                        .filter(item => item.itemCompleted._text === "NO")
-                        .map((item, i) => (
-                            <ChecklistItem key={i} {...item} />
-                        ))}
-                </List>
-                {this.state.listItems.filter(
-                    item => item.itemCompleted._text !== "NO"
-                ).length > 0 ? (
-                    <Typography variant="title">Completed</Typography>
-                ) : null}
-                <List>
-                    {this.state.listItems
-                        .filter(item => item.itemCompleted._text !== "NO")
-                        .map((item, i) => (
-                            <ChecklistItem key={i} {...item} />
-                        ))}
-                </List>
-            </div>
+            <Paper>
+                <div>
+                    <List>
+                        {this.state.listItems
+                            .filter(item => item.itemCompleted._text === "NO")
+                            .map((item, i) => (
+                                <ChecklistItem key={i} {...item} />
+                            ))}
+                    </List>
+                    {this.state.listItems.filter(
+                        item => item.itemCompleted._text !== "NO"
+                    ).length > 0 ? (
+                        <Typography variant="title">Completed</Typography>
+                    ) : null}
+                    <List>
+                        {this.state.listItems
+                            .filter(item => item.itemCompleted._text !== "NO")
+                            .map((item, i) => (
+                                <ChecklistItem key={i} {...item} />
+                            ))}
+                    </List>
+                </div>
+            </Paper>
         );
     }
 

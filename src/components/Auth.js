@@ -1,3 +1,6 @@
+// When the user allows Dropbox OAuth, Dropbox redirects to http://./#/access_token=...
+// This component handles that route by extracting the access_token, then redirecting to /settings
+
 import React, { Component } from "react";
 import queryString from "query-string";
 

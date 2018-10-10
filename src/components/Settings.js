@@ -60,7 +60,7 @@ export class Settings extends Component {
                     ) : (
                         <Button
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             onClick={this.handleDeauthClick}
                         >
                             Disconnect from Dropbox
